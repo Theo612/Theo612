@@ -1,11 +1,15 @@
 library(shiny)
 
 ui <- fluidPage(
-  titlePanel("Plateforme Génétique H5N1"),
+  titlePanel(
+    h1("Plateforme Génétique H5N1", align="center"),
+    ),
   
   sidebarLayout(
     sidebarPanel(
       fileInput("fastaFile", "Charger une séquence FASTA", accept = ".fasta"),
+      selectInput("savedSequence", "Sélectionner une séquence sauvegardée",
+                  choices = list.files("data", pattern = "\\.rds$")),
       actionButton("analyze", "Lancer l'analyse")
     ),
     
